@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Posts
+{% endblock %}
+
+{% block content %}
+    <h1>Posts</h1>
+    <p>总文章数：{{ posts.length }}</p>
+    <ul id="posts">
+        {% for post in posts %}
+        <li>
+            <h2>{{ post.title }}</h2>
+            <p><a href="/post/{{ post.id }}">阅读</a></p>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
