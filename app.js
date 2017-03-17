@@ -47,6 +47,10 @@ async function show(ctx, id) {
 
 async function create(ctx) {
   const post = ctx.request.body
+  if (post.title.length == 0 || post.content.length == 0) {
+    ctx.body = '提示：文章标题或内容不能为空!'
+    return
+  }
   const id = posts.push(post) - 1
   post.created_at = new Date()
   post.id = id

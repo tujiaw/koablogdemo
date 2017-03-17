@@ -5,13 +5,12 @@ Posts
 {% endblock %}
 
 {% block content %}
-    <h1>Posts</h1>
-    <p>总文章数：{{ posts.length }}</p>
+    <h1>文章列表</h1>
+    <p>总文章数：{{ posts.length }}, <a href="/post/new">我要写文章</a></p>
     <ul id="posts">
         {% for post in posts %}
         <li>
-            <h2>{{ post.title }}</h2>
-            <p><a href="/post/{{ post.id }}">阅读</a></p>
+            <p><a href="/post/{{ post.id }}">{{ post.title }}</a></p>
         </li>
         {% endfor %}
     </ul>
