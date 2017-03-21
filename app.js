@@ -24,10 +24,15 @@ let posts = []
 
 app.use(logger())
 app.use(bodyParser())
-app.use(route.get('/', list))
+app.use(route.get('/', index))
+app.use(route.get('/list', list))
 app.use(route.get('/post/new', add))
 app.use(route.get('/post/:id', show))
 app.use(route.post('/post', create))
+
+async function index(ctx) {
+  ctx.body = await ctx.render('index')
+}
 
 async function list(ctx) {
   ctx.body = await ctx.render('list', { posts: posts })
