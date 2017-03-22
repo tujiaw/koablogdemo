@@ -4,6 +4,7 @@ const route = require('koa-route')
 const bodyParser = require('koa-bodyparser')
 const co = require('co')
 const render = require('koa-swig')
+const serve = require('koa-static')
 const Koa = require('koa')
 const app = new Koa()
 
@@ -14,53 +15,10 @@ app.context.render = co.wrap(render({
   ext: 'html',
 }))
 
-let post = {
-  title: '',
-  content: '',
-  id: 0,
-  created_at: '',
-}
-let posts = []
-
+app.use(serve(path.join(__dirname, 'public')))
 app.use(logger())
 app.use(bodyParser())
-app.use(route.get('/', index))
-app.use(route.get('/list', list))
-app.use(route.get('/post/new', add))
-app.use(route.get('/post/:id', show))
-app.use(route.post('/post', create))
-
-async function index(ctx) {
-  ctx.body = await ctx.render('index')
-}
-
-async function list(ctx) {
-  ctx.body = await ctx.render('list', { posts: posts })
-}
-
-async function add(ctx) {
-  ctx.body = await ctx.render('new')
-}
-
-async function show(ctx, id) {
-  const post = posts[id]
-  if (!post) {
-    ctx.throw(404, 'invalid post id')
-  }
-  ctx.body = await ctx.render('show', { post: post })
-}
-
-async function create(ctx) {
-  const post = ctx.request.body
-  if (post.title.length == 0 || post.content.length == 0) {
-    ctx.body = '提示：文章标题或内容不能为空!'
-    return
-  }
-  const id = posts.push(post) - 1
-  post.created_at = new Date()
-  post.id = id
-  ctx.redirect('/')
-}
+require('./routes/routes')(app, route)
 
 app.listen(3000, () => {
   console.log('listening on port 3000')

@@ -1,9 +1,5 @@
-{% extends 'layout.html' %}
-
-{% block title %}
-Posts
-{% endblock %}
-
+{% extends 'main_layout.html' %}
+{% block title %}Posts{% endblock %}
 {% block content %}
     <h1>文章列表</h1>
     <p>总文章数：{{ posts.length }}, <a href="/post/new">我要写文章</a></p>
