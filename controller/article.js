@@ -1,19 +1,62 @@
 'use strict'
 
+var PostsModel = require('../models/posts');
+var MongoHelp = require('../models/mongo').mongoHelp;
+var config = require('config-lite');
+var PAGE_COUNT = config.pageCount;
+
 let post = {
-    title: '',
-    content: '',
-    id: 0,
+    title: '似懂非懂渡水复渡水公司的根深蒂固',
+    content: '地方的高档水果上的高档水果都是根深蒂固大嵩岛咖色导航水多高回山倒海国史大纲哈斯的后果',
+    id: 2,
     created_at: '',
 }
 let posts = []
+posts.push(post)
 
-module.exports.index = async function(ctx) {
-    ctx.body = await ctx.render('index')
+module.exports.index = async function(ctx, next) {
+    ctx.body = await ctx.render('index', 'hello')
 }
 
 module.exports.list = async function(ctx) {
-    ctx.body = await ctx.render('list', { posts: posts })
+    try {
+        const pagePosts = await PostsModel.getPostsProfile(null, 1)
+        const totalCount = await PostsModel.getPostsCount(null)
+        MongoHelp.addAllCreateDateTime(pagePosts);
+        MongoHelp.postsContent2Profile(pagePosts);
+
+        var pageNumbers = [];
+        var lastPage = Math.ceil(totalCount / PAGE_COUNT);
+        if (page <= lastPage) {
+            var i = 1;
+            if (page <= 3) {
+                for (i = 1; i <= page; i++) {
+                    pageNumbers.push(i);
+                }
+                for (i = page + 1; i <= lastPage && pageNumbers.length < 5; i++) {
+                    pageNumbers.push(i);
+                }
+            } else {
+                pageNumbers.push(0);
+                for (i = page - 2; i <= Math.min(page + 2, lastPage); i++) {
+                    pageNumbers.push(i);
+                }
+            }
+            if (lastPage > i) {
+                pageNumbers.push(0);
+            }
+        }
+
+        console.log(pagePosts);
+        // ctx.body = await ctx.render('list', {
+        //     posts: pagePosts,
+        //     page: page,
+        //     pageNumbers: pageNumbers,
+        //     lastPage: lastPage,
+        // })
+    } catch (err) {
+        next(Error(err))
+    }
 }
 
 module.exports.add = async function(ctx) {
