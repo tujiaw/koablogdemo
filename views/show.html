@@ -1,12 +1,8 @@
-{% extends 'layout.html' %}
-
-{% block title %}
-{{ post.title }}
-{% endblock %}
-
+{% extends 'main_layout.html' %}
+{% block title %}{{ post.title }}{% endblock %}
 {% block content %}
     <h1>{{ post.title }}</h1>
-    <div id="content">
+    <div id="content" class="markdown-body">
         {{ post.content }}
     </div>
 {% endblock %}

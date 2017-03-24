@@ -1,31 +1,30 @@
 {% extends 'main_layout.html' %}
 {% block title %}Posts{% endblock %}
-{% block headlink%}<link href="/css/list.css" rel="stylesheet">{% endblock %}
+{% block subhead %}<link href="/css/list.css" rel="stylesheet">{% endblock %}
 {% block content %}
-    <h1>文章列表</h1>
-    <p>总文章数：{{ posts.length }}, <a href="/post/new">我要写文章</a></p>
     <ul id="posts">
         {% for post in posts %}
         <div class="post-inner">
             <header class="post-header">
                 <h2>
-                    <a href="/post/{{ post.id }}" class="post-title">Qt开发环境</a>
+                    <a href="/post/{{ post.id }}" class="post-title">{{ post.title }}</a>
                 </h2>
                 <div>
                     <span class="glyphicon glyphicon-calendar"></span>
-                    <a href="" class="post-date">2017-02-19</a>
+                    <a href="" class="post-date">{{ post.created_at }}</a>
                 </div>
             </header>
             <div class="post-entry">
-                <p>水电费水电费水电费是个收到公司的噶十多个</p>
+                {{ post.content }}
             </div>
             <div class="post-footer">
                 <div class="post-tag tagcloud">
                     <span class="glyphicon glyphicon-tags">&nbsp;</span>
-                    <span class="label label-default">Windows</span>
-                    <span class="label label-default">Linux</span>
+                    {% for tag in post.tags %}
+                        <span class="label label-default">{{ tag }}</span>
+                    {% endfor %}
                 </div>
-                <div class="post-read"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;阅读(10)</div>
+                <div class="post-read"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;阅读({{ post.pv }})</div>
             </div>
         </div>
         {% endfor %}
