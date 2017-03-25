@@ -1,4 +1,3 @@
-var marked = require('marked');
 var mongoose = require('./mongo').mongoose;
 var config = require('config-lite');
 var PAGE_COUNT = config.pageCount;

@@ -8,6 +8,9 @@ html { height: 100%;}
 .nav .open > a:hover, 
 .nav .open > a:focus {background-color: transparent;}
 
+.row.content {
+    max-width: 1110px;
+}
 /*-------------------------------*/
 /*           Wrappers            */
 /*-------------------------------*/

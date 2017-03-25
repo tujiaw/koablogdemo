@@ -6,9 +6,9 @@
         {% for post in posts %}
         <div class="post-inner">
             <header class="post-header">
-                <h2>
+                <h3>
                     <a href="/post/{{ post.id }}" class="post-title">{{ post.title }}</a>
-                </h2>
+                </h3>
                 <div>
                     <span class="glyphicon glyphicon-calendar"></span>
                     <a href="" class="post-date">{{ post.created_at }}</a>
@@ -17,6 +17,7 @@
             <div class="post-entry">
                 {{ post.content }}
             </div>
+            <p class="more"><a href="/post/{{ post.id }}">阅读全文 »</a></p>
             <div class="post-footer">
                 <div class="post-tag tagcloud">
                     <span class="glyphicon glyphicon-tags">&nbsp;</span>
@@ -25,6 +26,7 @@
                     {% endfor %}
                 </div>
                 <div class="post-read"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;阅读({{ post.pv }})</div>
+            
             </div>
         </div>
         {% endfor %}

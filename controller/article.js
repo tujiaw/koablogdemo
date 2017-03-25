@@ -61,6 +61,11 @@ module.exports.show = async function(ctx, id) {
 
     try {
         const post = await PostsModel.getPostById(id)
+        await PostsModel.incPv(id)
+        if (post) {
+            MongoHelp.addOneCreateAt(post)
+            MongoHelp.postContent2html(post)
+        }
         ctx.body = await ctx.render('show', { post: post })
     } catch (err) {
         ctx.throw(err)

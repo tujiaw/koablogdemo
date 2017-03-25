@@ -1,6 +1,13 @@
+a:hover {
+    text-decoration:none
+}
+
 .post-inner {
     display: flex;
     flex-direction: column;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
 }
 
 .post-header {
@@ -18,4 +25,12 @@
 }
 .post-header a {
     color: #08c;
+}
+.post-header a:hover {
+    color: #11B1FF;
+}
+
+p.more {
+    margin: 15px 0;
+    font-size: 16px;
 }
