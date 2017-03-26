@@ -10,7 +10,6 @@ const Koa = require('koa')
 const app = new Koa()
 
 app.key = ['sdgsdgdsg']
-
 app.use(logger())
 app.use(serve(path.join(__dirname, 'public')))
 app.use(session(app))
@@ -21,6 +20,7 @@ app.context.render = co.wrap(render({
   cache: 'memory',
   ext: 'html',
 }))
+
 require('./routes/routes')(app, route)
 
 app.listen(3000, () => {

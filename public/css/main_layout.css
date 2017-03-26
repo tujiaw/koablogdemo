@@ -82,6 +82,9 @@ html { height: 100%;}
     width: 100%;
 }
 
+.sidebar-nav li span {
+    margin-right: 20px;
+}
 .sidebar-nav li:before {
     content: '';
     position: absolute;
@@ -298,4 +301,34 @@ html { height: 100%;}
     bottom: 0;
     background-color: rgba(250,250,250,.8);
     z-index: 1;
+}
+
+/***************************************************************************/
+.profile {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.profile span {
+    margin-top: 10px;
+    color: #999;
+    font-size: 17px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    /*background: rgb(238, 238, 238);*/
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.footer>a {
+    text-decoration: none;
+    color: #666;
 }

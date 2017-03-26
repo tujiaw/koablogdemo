@@ -6,8 +6,9 @@ a:hover {
     display: flex;
     flex-direction: column;
     border-top: 1px solid #fff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px dashed #ddd;
     word-wrap: break-word;
+    padding-bottom: 30px;
 }
 
 .post-header {
@@ -29,7 +30,9 @@ a:hover {
 .post-header a:hover {
     color: #11B1FF;
 }
-
+.post-date {
+    color: #555;
+}
 p.more {
     margin: 15px 0;
     font-size: 16px;

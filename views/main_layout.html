@@ -16,47 +16,53 @@
         <!-- Sidebar -->
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
-                <li class="sidebar-brand"><a href="#">Brand</a></li>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Team</a></li>
+                <div class="profile">
+                  <a href="/">
+                    <img class="img-circle" src="/img/myavatar.jpg" alt="三家店 - 泊客网">
+                  </a>
+                  <span>三家店 - 泊客网</span>
+                </div>
+                <li><a href="/"><span class="glyphicon glyphicon-home"></span>主页</a></li>
+                <li><a href="/about"><span class="glyphicon glyphicon-user"></span>关于</a></li>
+                <li><a href="/archives"><span class="glyphicon glyphicon-briefcase"></span>归档</a></li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-link"></span>链接 <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Dropdown heading</li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
+                    <li class="dropdown-header">我的链接</li>
+                    <li><a href="/wchathot.html">微信文章精选</a></li>
+                    <li><a href="http://blog.csdn.net/tujiaw">CSDN博客</a></li>
+                    <li><a href="https://github.com/tujiaw">我的GitHub</a></li>
+                    <li class="dropdown-header">工具</li>
+                    <li><a href="/upload.html">上传图片</a></li>
+                    <li><a href="http://123.57.244.170:3100/base64">BASE64编解码</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="https://twitter.com/maridlcrmn">Follow me</a></li>
             </ul>
         </nav>
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <button type="button" class="hamburger is-open" data-toggle="offcanvas">
-                <span class="hamb-top"></span>
-    			<span class="hamb-middle"></span>
-				<span class="hamb-bottom"></span>
+              <span class="hamb-top"></span>
+              <span class="hamb-middle"></span>
+              <span class="hamb-bottom"></span>
             </button>
             <div class="row content">
-                    {% block content %}
-                        <p>Missing content!</p>
-                    {% endblock %}
-
+              {% block content %}
+                  <p>Missing content!</p>
+              {% endblock %}
             </div>
+            
+              <footer class="footer">
+                <a href="http://www.miitbeian.gov.cn/" target="_blank"><img src="/img/beian_gov_cn.png" style="vertical-align:middle;margin-right:5px;">鄂ICP备17003086号. Copyright © 2016. All Rights Reserved. </a> 
+              </footer>
         </div>
         <!-- /#page-content-wrapper -->
     </div>
     <!-- /#wrapper -->
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+{% block extend_script %}{% endblock %}
 <script type="text/javascript">
 $(document).ready(function () {
   var trigger = $('.hamburger'),

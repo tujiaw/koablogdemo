@@ -50,10 +50,6 @@ module.exports.list = async function(ctx) {
     }
 }
 
-module.exports.add = async function(ctx) {
-    ctx.body = await ctx.render('new')
-}
-
 module.exports.show = async function(ctx, id) {
     if (!id) {
         ctx.throw(404, 'invalid post id')
@@ -72,16 +68,30 @@ module.exports.show = async function(ctx, id) {
     }
 }
 
-module.exports.create = async function(ctx) {
-    // const post = ctx.request.body
-    // if (post.title.length == 0 || post.content.length == 0) {
-    //     ctx.body = '提示：文章标题或内容不能为空!'
-    //     return
-    // }
-    // const id = posts.push(post) - 1
-    // post.created_at = new Date()
-    // post.id = id
-    // ctx.redirect('/')
+// module.exports.new = async function(ctx) {
+//     // const post = ctx.request.body
+//     // if (post.title.length == 0 || post.content.length == 0) {
+//     //     ctx.body = '提示：文章标题或内容不能为空!'
+//     //     return
+//     // }
+//     // const id = posts.push(post) - 1
+//     // post.created_at = new Date()
+//     // post.id = id
+//     // ctx.redirect('/')
+// }
+
+module.exports.write = async function(ctx) {
+    ctx.body = await ctx.render('write', { 
+        tags: config.tags 
+    })
 }
 
-
+module.exports.add = async function(ctx) {
+    const post = ctx.request.body;
+    console.log(post);
+    if (!post.title || !post.content) {
+        ctx.body = await ctx.render('title or content is empty');
+        return;
+    }
+    ctx.redirect('/post/write');
+}
