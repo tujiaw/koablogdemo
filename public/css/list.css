@@ -24,15 +24,19 @@ a:hover {
     justify-content: space-between;
     align-items: center;
 }
+
 .post-header a {
     color: #08c;
 }
+
 .post-header a:hover {
     color: #11B1FF;
 }
+
 .post-date {
     color: #555;
 }
+
 p.more {
     margin: 15px 0;
     font-size: 16px;
