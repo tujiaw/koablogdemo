@@ -2,6 +2,7 @@
 
 const Article = require('../controller/article')
 const User = require('../controller/user')
+const Check = require('../controller/check')
 
 module.exports = function(app, route) {
     app.use(route.get('/', Article.list))
@@ -13,4 +14,5 @@ module.exports = function(app, route) {
 
     app.use(route.get('/user/signin', User.signin))
     app.use(route.post('/user/req-signin', User.reqSignin))
+    app.use(route.get('/user/signout', User.signout))
 }

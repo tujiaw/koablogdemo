@@ -81,17 +81,35 @@ module.exports.show = async function(ctx, id) {
 // }
 
 module.exports.write = async function(ctx) {
+    console.log('112343254235235');
+    if (!ctx.session.user) {
+        ctx.redirect('/user/signin')
+        return
+    }
+
     ctx.body = await ctx.render('write', { 
         tags: config.tags 
     })
 }
 
 module.exports.add = async function(ctx) {
-    const post = ctx.request.body;
+    if (!ctx.session.user) {
+        ctx.redirect('/user/signin')
+        return
+    }
+
+    const user = ctx.session.user
+    let post = ctx.request.body
+    const tags = post.tags.split(';')
     console.log(post);
     if (!post.title || !post.content) {
-        ctx.body = await ctx.render('title or content is empty');
-        return;
+        ctx.body = await ctx.render('title or content is empty')
+        return
     }
-    ctx.redirect('/post/write');
+
+    post.author = user._id
+    post.pv = 1
+    post.tags = tags
+    await new PostsModel(post).save()
+    ctx.redirect('/');
 }

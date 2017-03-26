@@ -9,7 +9,7 @@ const serve = require('koa-static')
 const Koa = require('koa')
 const app = new Koa()
 
-app.key = ['sdgsdgdsg']
+app.keys = ['sddsfsdfsdggsdgdsg']
 app.use(logger())
 app.use(serve(path.join(__dirname, 'public')))
 app.use(session(app))

@@ -1,9 +1,11 @@
 .flex-container {
-    min-height: 80%;  
+    /*min-height: 80%;  
     min-height: 80vh; 
     min-width: 100%;
-    min-width: 100vh;
+    min-width: 100vh;*/
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
 }
