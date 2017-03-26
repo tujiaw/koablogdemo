@@ -25,7 +25,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "node ./bin/www",
-    "start": "pm2 start ./bin/www --name 'nodeblog' "
+    "start": "pm2 start ./app.js --name 'koablogdemo' "
   },
   "author": "",
   "license": "ISC"
