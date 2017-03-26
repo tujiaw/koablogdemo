@@ -10,6 +10,7 @@ html { height: 100%;}
 
 .row.content {
     max-width: 1110px;
+    margin: 20px;
 }
 /*-------------------------------*/
 /*           Wrappers            */

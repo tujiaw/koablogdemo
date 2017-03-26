@@ -10,9 +10,10 @@ module.exports.index = async function(ctx, next) {
 }
 
 module.exports.list = async function(ctx) {
-    var page = 1
+    var page = ctx.query.page || 1
+    page = parseInt(page)
     try {
-        const pagePosts = await PostsModel.getPostsProfile(null, 1)
+        const pagePosts = await PostsModel.getPostsProfile(null, page)
         const totalCount = await PostsModel.getPostsCount(null)
         MongoHelp.addAllCreateDateTime(pagePosts);
         MongoHelp.postsContent2Profile(pagePosts);
