@@ -4,6 +4,7 @@ const route = require('koa-route')
 const bodyParser = require('koa-bodyparser')
 const co = require('co')
 const render = require('koa-swig')
+const config = require('config-lite')
 const session = require('koa-session');
 const serve = require('koa-static')
 const Koa = require('koa')
@@ -23,6 +24,6 @@ app.context.render = co.wrap(render({
 
 require('./routes/routes')(app, route)
 
-app.listen(3000, () => {
-  console.log('listening on port 3000')
+app.listen(config.port, () => {
+  console.log('listening on port ' + config.port)
 })
