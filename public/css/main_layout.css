@@ -8,10 +8,6 @@ html { height: 100%;}
 .nav .open > a:hover, 
 .nav .open > a:focus {background-color: transparent;}
 
-.row.content {
-    max-width: 1110px;
-    margin: 20px;
-}
 /*-------------------------------*/
 /*           Wrappers            */
 /*-------------------------------*/
@@ -24,16 +20,12 @@ html { height: 100%;}
     transition: all 0.5s ease;
 }
 
-#wrapper.toggled {
-    padding-left: 0px;
-}
-
 #sidebar-wrapper {
     z-index: 1000;
+    margin-left: -220px;
     left: 220px;
     width: 220px;
     height: 100%;
-    margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
     background: #1a1a1a;
@@ -43,6 +35,22 @@ html { height: 100%;}
     transition: all 0.5s ease;
 }
 
+#wrapper.toggled {
+    padding-left: 0px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    left: 0;
+}
+
+#page-content-wrapper {
+    width: 100%;
+}
+
+.inset {
+  padding: 20px;
+}
+
 #sidebar-wrapper::-webkit-scrollbar {
   display: none;
 }
@@ -50,17 +58,6 @@ html { height: 100%;}
 #wrapper.toggled #sidebar-wrapper {
     width: 0px;
 }
-
-#page-content-wrapper {
-    padding-top: 0px;
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-/*#wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -220px;
-}*/
 
 /*-------------------------------*/
 /*     Sidebar nav styles        */
@@ -179,11 +176,11 @@ html { height: 100%;}
 .hamburger {
   position: fixed;
   top: 10px;  
-  z-index: 999;
+  z-index: 10001;
   display: block;
   width: 32px;
   height: 32px;
-  margin-left: -38px;
+  left: 10px;
   background: transparent;
   border: none;
 }
@@ -197,7 +194,6 @@ html { height: 100%;}
   display: block;
   width: 100px;
   font-size: 14px;
-  color: #fff;
   line-height: 32px;
   text-align: center;
   opacity: 0;
@@ -251,7 +247,7 @@ html { height: 100%;}
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-middle,
 .hamburger.is-open .hamb-bottom {
-  background-color: #1a1a1a;
+  background-color: #fff;
 }
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-bottom {

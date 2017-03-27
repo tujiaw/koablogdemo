@@ -24,7 +24,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node ./bin/www",
+    "test": "node app.js",
     "start": "pm2 start ./app.js --name 'koablogdemo' "
   },
   "author": "",

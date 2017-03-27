@@ -43,23 +43,29 @@
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <button type="button" class="hamburger is-open" data-toggle="offcanvas">
-              <span class="hamb-top"></span>
-              <span class="hamb-middle"></span>
-              <span class="hamb-bottom"></span>
-            </button>
-            <div class="row content">
-              {% block content %}
-                  <p>Missing content!</p>
-              {% endblock %}
-              <footer class="footer">
-                <a href="http://www.miitbeian.gov.cn/" target="_blank"><img src="/img/beian_gov_cn.png" style="vertical-align:middle;margin-right:5px;">鄂ICP备17003086号. Copyright © 2016. All Rights Reserved. </a> 
-              </footer>
+          <div class="content-header">
+            <div class="row">
+              <button type="button" class="hamburger is-open" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+              </button>
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
+          </div> <!-- content-header -->
+          <div class="page-content inset">
+            <div class="row">
+              <div class="col-md-12 ">
+                  {% block content %}
+                      <p>Missing content!</p>
+                  {% endblock %}
+                  <footer class="footer">
+                    <a href="http://www.miitbeian.gov.cn/" target="_blank"><img src="/img/beian_gov_cn.png" style="vertical-align:middle;margin-right:5px;">鄂ICP备17003086号. Copyright © 2016. All Rights Reserved. </a> 
+                  </footer>
+              </div>
+            </div>
+          </div> <!-- page-content inset -->
+        </div> <!-- /#page-content-wrapper -->
+    </div> <!-- /#wrapper -->
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 {% block extend_script %}{% endblock %}
@@ -89,7 +95,7 @@ $(document).ready(function () {
   
   $('[data-toggle="offcanvas"]').click(function () {
         $('#wrapper').toggleClass('toggled');
-  });  
+  });
 });
 </script>
 </body>
