@@ -35,6 +35,10 @@ html { height: 100%;}
     transition: all 0.5s ease;
 }
 
+#collapse-sidebar-wrapper {
+    display: none;
+}
+
 #wrapper.toggled {
     padding-left: 0px;
 }
@@ -69,22 +73,14 @@ html { height: 100%;}
     #sidebar-wrapper {
         left: 0;
     }
-    #wrapper.toggled {
-        position: relative;
-        left: 220px;
-    }
-    #wrapper.toggled #sidebar-wrapper {
-        left: 220px;
-        width: 220px;
-        transition: all 0.4s ease 0s;
-    }
-    .hamburger {
+    #hamburger-wrapper {
         display: none;
     }
-}
-@media (min-width: 768px) {
-    .hamburger {
+    #collapse-sidebar-wrapper {
         display: block;
+    }
+    .inset {
+        padding-top: 40px;
     }
 }
 

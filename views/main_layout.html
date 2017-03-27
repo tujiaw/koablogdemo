@@ -50,10 +50,45 @@
             </ul>
         </nav>
         <!-- /#sidebar-wrapper -->
+
+        <!-- 可折叠导航条 -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="collapse-sidebar-wrapper">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">泊客网</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/">主页</a></li>
+                <li><a href="/archives">归档</a></li>
+                <li><a href="/about">关于</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">相关链接 <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/wchathot.html">微信文章精选</a></li>
+                    <li><a href="http://blog.csdn.net/tujiaw">CSDN Blog</a></li>
+                    <li><a href="https://github.com/tujiaw">GitHub</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">工具</li>
+                    <li><a href="http://123.57.244.170:3100/base64">base64编解码</a></li>
+                    <li><a href="/upload.html">上传图片</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav> <!-- 可折叠导航条 -->
+
         <!-- Page Content -->
         <div id="page-content-wrapper">
           <div class="content-header">
-            <div class="row">
+            <div id="hamburger-wrapper">
               <button type="button" class="hamburger is-open" data-toggle="offcanvas">
                 <span class="hamb-top"></span>
                 <span class="hamb-middle"></span>
@@ -91,7 +126,7 @@ $(document).ready(function () {
     });
 
     function hamburger_cross() {
-      if (isClosed == true) {          
+      if (trigger.hasClass('is-open')) {          
         //overlay.hide();
         trigger.removeClass('is-open');
         trigger.addClass('is-closed');
