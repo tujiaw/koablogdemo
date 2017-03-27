@@ -36,7 +36,7 @@ module.exports.reqSignin = async function(ctx) {
 
         delete result.password
         ctx.session.user = result
-        ctx.redirect('/post/write')
+        ctx.redirect('/write')
     }
 }
 

@@ -69,20 +69,7 @@ module.exports.show = async function(ctx, id) {
     }
 }
 
-// module.exports.new = async function(ctx) {
-//     // const post = ctx.request.body
-//     // if (post.title.length == 0 || post.content.length == 0) {
-//     //     ctx.body = '提示：文章标题或内容不能为空!'
-//     //     return
-//     // }
-//     // const id = posts.push(post) - 1
-//     // post.created_at = new Date()
-//     // post.id = id
-//     // ctx.redirect('/')
-// }
-
 module.exports.write = async function(ctx) {
-    console.log('112343254235235');
     if (!ctx.session.user) {
         ctx.redirect('/user/signin')
         return
@@ -113,4 +100,8 @@ module.exports.add = async function(ctx) {
     post.tags = tags
     await new PostsModel(post).save()
     ctx.redirect('/');
+}
+
+module.exports.archives = async function(ctx, next) {
+    ctx.body = await ctx.render('archives')
 }
