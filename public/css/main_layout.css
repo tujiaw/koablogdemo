@@ -60,6 +60,27 @@ html { height: 100%;}
 }
 
 /*-------------------------------*/
+/*            小屏处理            */
+/*-------------------------------*/
+@media (max-width: 767px) {
+    #wrapper {
+        padding-left: 0;
+    }
+    #sidebar-wrapper {
+        left: 0;
+    }
+    #wrapper.toggled {
+        position: relative;
+        left: 220px;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        left: 220px;
+        width: 220px;
+        transition: all 0.4s ease 0s;
+    }
+}
+
+/*-------------------------------*/
 /*     Sidebar nav styles        */
 /*-------------------------------*/
 
