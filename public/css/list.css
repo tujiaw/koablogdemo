@@ -26,11 +26,11 @@ a:hover {
 }
 
 .post-header a {
-    color: #000;
+    color: #333333;
 }
 
 .post-header a:hover {
-    color: #333;
+    color: #337ab7;
 }
 
 .post-date {
