@@ -3,6 +3,7 @@
 {% block subhead %}
 <link rel="stylesheet" href="/css/github.css">
 <link rel="stylesheet" href="/css/github-markdown.min.css">
+<link rel="stylesheet" href="/css/show.css">
 {% endblock %}
 {% block content %}
     <div class="show-content">
@@ -23,20 +24,45 @@
             </ul>
         </nav>
     </div>
+    <button type="button" class="back-to-top">
+        <span class="glyphicon glyphicon-send" aria-hidden="true"></span> <span id="percent">0%</span>
+    </button>
     <!-- 多说评论框 start -->
     <div class="ds-thread" data-thread-key="<%= post._id %>" data-title="<%= post.title %>" data-url="/posts/<%= post._id %>"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
-    var duoshuoQuery = {short_name:"tujiaw"};
-      (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-        || document.getElementsByTagName('body')[0]).appendChild(ds);
-      })();
+        var duoshuoQuery = {short_name:"tujiaw"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
       </script>
     <!-- 多说公共JS代码 end -->
+{% endblock %}
+{% block extend_script %}
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $('.back-to-top').on('click', () => {
+                $('body,html').animate({scrollTop: 0}, 800);
+            })
+
+            $('.back-to-top').hide();
+            $(window).scroll(() => {
+                let percent = $(window).scrollTop() / ($(document).height() - $(window).height());
+                percent = parseInt(percent * 100);
+                $('#percent').text(`${percent}%`);
+                if (percent >= 10) {
+                    $('.back-to-top').fadeIn(400);
+                } else {
+                    $('.back-to-top').fadeOut(200);
+                }
+
+            })
+        });
+    </script>
 {% endblock %}
