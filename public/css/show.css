@@ -2,7 +2,8 @@
     position: fixed;
     right: 20px;
     bottom: 20px;
-    border: 0px;
+    border: none;
+    outline: none;
     opacity: 0.75;
     border-radius: 4px;
 }

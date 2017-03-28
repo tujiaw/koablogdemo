@@ -45,24 +45,26 @@
     <!-- 多说公共JS代码 end -->
 {% endblock %}
 {% block extend_script %}
+    <script src="/js/util.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
             $('.back-to-top').on('click', () => {
                 $('body,html').animate({scrollTop: 0}, 800);
             })
-
             $('.back-to-top').hide();
-            $(window).scroll(() => {
-                let percent = $(window).scrollTop() / ($(document).height() - $(window).height());
-                percent = parseInt(percent * 100);
-                $('#percent').text(`${percent}%`);
-                if (percent >= 10) {
-                    $('.back-to-top').fadeIn(400);
-                } else {
-                    $('.back-to-top').fadeOut(200);
-                }
 
-            })
+            if (!(isMobile.Android() || isMobile.IOS())) {
+                $(window).scroll(() => {
+                    let percent = $(window).scrollTop() / ($(document).height() - $(window).height());
+                    percent = parseInt(percent * 100);
+                    $('#percent').text(`${percent}%`);
+                    if (percent >= 10) {
+                        $('.back-to-top').fadeIn(400);
+                    } else {
+                        $('.back-to-top').fadeOut(200);
+                    }
+                })
+            }
         });
     </script>
 {% endblock %}
