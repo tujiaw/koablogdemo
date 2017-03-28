@@ -5,6 +5,7 @@ var MongoHelp = require('../models/mongo').mongoHelp;
 var sha1 = require('sha1');
 
 module.exports.signin = async function(ctx) {
+    console.log('-------------signin---------------')
     ctx.body = await ctx.render('signin')
 }
 

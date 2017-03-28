@@ -12,6 +12,16 @@
             {{ post.content }}
             {% endautoescape %}
         </div>
+        <nav aria-label="...">
+            <ul class="pager">
+                {% if prevPost && prevPost.title && prevPost.title.length > 0 %}
+                    <li class="previous"><a href="/post/{{ prevPost._id.toString() }}"><span aria-hidden="true">&larr;</span> {{ prevPost.title }}</a></li>
+                {% endif %}
+                {% if nextPost && nextPost.title && nextPost.title.length > 0 %}
+                    <li class="next"><a href="/post/{{ nextPost._id.toString() }}">{{ nextPost.title }} <span aria-hidden="true">&rarr;</span></a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
     <!-- 多说评论框 start -->
     <div class="ds-thread" data-thread-key="<%= post._id %>" data-title="<%= post.title %>" data-url="/posts/<%= post._id %>"></div>

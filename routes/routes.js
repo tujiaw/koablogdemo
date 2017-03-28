@@ -10,6 +10,8 @@ module.exports = function(app, route) {
     app.use(route.get('/write', Posts.write))
     app.use(route.get('/post/:id', Posts.show))
     app.use(route.get('/archives', Posts.archives))
+    app.use(route.get('/remove/:id', Posts.remove))
+    app.use(route.get('/edit/:id', Posts.edit))
     app.use(route.post('/add', Posts.add))
 
     app.use(route.get('/user/signin', User.signin))

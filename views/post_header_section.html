@@ -1,15 +1,15 @@
 <header class="post-header" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
     <div><h1><a href="/post/{{ post.id }}" class="post-title">{{ post.title }}</a></h1></div>
     <div class="post-footer" style="display:flex;flex-direction:row;justify-content:center;margin-bottom:20px;color:#666;">
-        <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;
+        <span class="glyphicon glyphicon-tags"></span>&nbsp;
         {% for tag in post.tags %}
             <a href="/tags/{{ tag }}"> {{ tag }}</a>&nbsp;
-        {% endfor %}&nbsp;&nbsp;&nbsp;&nbsp;
-        <span class="glyphicon glyphicon-calendar"></span><span class="post-date">&nbsp;&nbsp;{{ post.created_at }}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;阅读({{ post.pv }})
+        {% endfor %}&nbsp;
+        <span class="glyphicon glyphicon-calendar"></span><span class="post-date">&nbsp;{{ post.created_at }}</span>&nbsp;&nbsp;
+        <span class="glyphicon glyphicon-eye-open"></span>&nbsp;阅读({{ post.pv }})
         {% if user && post.author._id && user._id.toString() === post.author._id.toString() %}
-            <span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;<a href="/edit/{{ post._id }}">编辑</a>
-            <span class="glyphicon glyphicon-floppy-remove"></span>&nbsp;&nbsp;<a href="/remove/{{ post._id }}">删除</a>
+            &nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span>&nbsp;<a href="/edit/{{ user._id.toString() }}">编辑</a>
+            &nbsp;&nbsp;<span class="glyphicon glyphicon glyphicon-remove"></span>&nbsp;<a href="/remove/{{ user._id.toString() }}">删除</a>
         {% endif %}
     </div>
 </header>

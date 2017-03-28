@@ -72,4 +72,12 @@ PostSchema.statics.delPostById = function(postId, author) {
   return this.remove({ author: author, _id: postId }).exec();
 };
 
+PostSchema.statics.getPrevPostById = function(postId) {
+  return this.find({ _id: { $gt : postId }}).sort({ _id: 1 }).limit(1).exec();
+}
+
+PostSchema.statics.getNextPostById = function(postId) {
+  return this.find({ _id: { $lt : postId }}).sort({ _id: -1 }).limit(1).exec();
+}
+
 module.exports = mongoose.model('Posts', PostSchema);

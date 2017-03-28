@@ -58,12 +58,19 @@ module.exports.show = async function(ctx, id) {
 
     try {
         const post = await PostsModel.getPostById(id)
+        const prevPosts = await PostsModel.getPrevPostById(id)
+        const nextPosts = await PostsModel.getNextPostById(id)
         await PostsModel.incPv(id)
         if (post) {
             MongoHelp.addOneCreateAt(post)
             MongoHelp.postContent2html(post)
         }
-        ctx.body = await ctx.render('show', { post: post })
+        ctx.body = await ctx.render('show', { 
+            post: post, 
+            user: ctx.session.user,
+            prevPost: prevPosts.length > 0 ? prevPosts[0] : null,
+            nextPost: nextPosts.length > 0 ? nextPosts[0] : null
+        })
     } catch (err) {
         ctx.throw(err)
     }
@@ -104,4 +111,27 @@ module.exports.add = async function(ctx) {
 
 module.exports.archives = async function(ctx, next) {
     ctx.body = await ctx.render('archives')
+}
+
+module.exports.remove = async function(ctx, id) {
+    if (!ctx.session.user) {
+        ctx.redirect('/user/signin')
+        return
+    }
+
+    if (!id) {
+        ctx.throw(404, 'invalid post id')
+    }
+
+    try {
+        console.log(`remove author:${ctx.session.user._id}, id:${id}`)
+        await PostsModel.delPostById(id, ctx.session.user._id)
+        ctx.redirect('/')
+    } catch (err) {
+        ctx.throw(err);
+    }
+}
+
+module.exports.edit = async function(ctx, id) {
+
 }
