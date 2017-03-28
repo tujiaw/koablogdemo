@@ -1,6 +1,7 @@
 body {
     position: relative;
     overflow-x: hidden;
+    font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 body,
 html { height: 100%;}
@@ -8,6 +9,10 @@ html { height: 100%;}
 .nav .open > a:hover, 
 .nav .open > a:focus {background-color: transparent;}
 
+a { color: #1a1a1a; text-decoration: none; }
+a:hover { color: #666; text-decoration: none; }
+a:focus { text-decoration: none; }
+.post-header h1 { font-size: 22px; line-height: 1.5; }
 /*-------------------------------*/
 /*           Wrappers            */
 /*-------------------------------*/
