@@ -12,9 +12,10 @@ module.exports = function(app, route) {
     app.use(route.get('/archives', Posts.archives))
     app.use(route.get('/remove/:id', Posts.remove))
     app.use(route.get('/edit/:id', Posts.edit))
-    app.use(route.post('/add', Posts.add))
+    app.use(route.post('/add', Posts.reqAdd))
+    app.use(route.post('/edit', Posts.reqEdit))
 
     app.use(route.get('/user/signin', User.signin))
     app.use(route.get('/user/signout', User.signout))
-    app.use(route.post('/user/req-signin', User.reqSignin))
+    app.use(route.post('/user/signin', User.reqSignin))
 }

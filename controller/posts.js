@@ -87,7 +87,7 @@ module.exports.write = async function(ctx) {
     })
 }
 
-module.exports.add = async function(ctx) {
+module.exports.reqAdd = async function(ctx) {
     if (!ctx.session.user) {
         ctx.redirect('/user/signin')
         return
@@ -157,4 +157,8 @@ module.exports.edit = async function(ctx, id) {
     } catch (err) {
         ctx.throw(err)
     }
+}
+
+module.exports.reqEdit = async function(ctx) {
+    ctx.redirect('/')
 }
