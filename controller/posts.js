@@ -128,10 +128,33 @@ module.exports.remove = async function(ctx, id) {
         await PostsModel.delPostById(id, ctx.session.user._id)
         ctx.redirect('/')
     } catch (err) {
-        ctx.throw(err);
+        ctx.throw(err)
     }
 }
 
 module.exports.edit = async function(ctx, id) {
+    if (!ctx.session.user) {
+        ctx.redirect('/user/signin')
+        return
+    }
 
+    if (!id) {
+        ctx.throw(404, 'invalid post id')
+    }
+
+    try {
+        const post = await PostsModel.getRawPostById(id)
+        if (!post) {
+            ctx.throw('文章不存在')
+        }
+        if (post.author._id.toString() !== ctx.session.user._id.toString()) {
+            ctx.throw('权限不足')
+        }
+        ctx.render('write', { 
+            post: post,
+            tags: config.tags
+        })
+    } catch (err) {
+        ctx.throw(err)
+    }
 }

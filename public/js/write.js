@@ -1,7 +1,8 @@
-function onTagClick(self) {
-    const unSelectClass = "glyphicon-star-empty";
-    const selectClass = "glyphicon-star";
+'use strict'
 
+const unSelectClass = "glyphicon-star-empty";
+const selectClass = "glyphicon-star";
+function onTagClick(self) {
     const spanObj = $(self).find('span');
     let isAdd = ($(self).html().indexOf(unSelectClass) >= 0);
     spanObj.removeClass(unSelectClass);
@@ -23,3 +24,17 @@ function onTagClick(self) {
     $('#tags').val(tags.join(';'));
     console.log($('#tags').val());
 }
+
+$(document).ready(() => {
+    const tags = $('#tags').val().split(';');
+    $('.tag-cloud button').each((i, ele) => {
+        var tagname = $(ele).text().trim();
+        if ($.inArray(tagname, tags) >= 0) {
+            $(ele).find('span').removeClass(unSelectClass);
+            $(ele).find('span').addClass(selectClass);
+        }
+    })
+})
+
+
+

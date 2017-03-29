@@ -6,26 +6,35 @@
 {% block content %}
 <div class="flex-container">
     <h1 class="text-center">发表博客</h1>
+    {% if post %}
+        {% set edit_title=post.title %}
+        {% set edit_content=post.content %}
+        {% set edit_tags=post.tags.join(';') %}
+    {% else %}
+        {% set edit_title='' %}
+        {% set edit_content='' %}
+        {% set edit_tags='' %}
+    {% endif %}
     <form role="form" action="/add" method="post">
         <div class="form-group">
             <label for="name">文章标题</label>
-            <input type="text" class="form-control" name="title" placeholder="请输入文章标题" required>
+            <input type="text" class="form-control" name="title" placeholder="请输入文章标题" value="{{ edit_title }}" required>
         </div>
         <div class="form-group">
             <label for="title">文章内容</label>
-            <textarea class="form-control required" name="content" cols="30" rows="15" required ></textarea>
+            <textarea class="form-control required" name="content" cols="30" rows="15">{{ edit_content }}</textarea>
             <p class="help-block">支持Markdown语法。</p>
         </div>
         <div class="form-group">
             <label for="name">标签云</label>
             <div class="tag-cloud">
                 {% for tag in tags %}
-                    <button type="button" class="btn btn-default btn-xs" onclick="onTagClick(this)" value={{tag}}>
+                    <button type="button" class="btn btn-default btn-xs" onclick="onTagClick(this)" tagname="{{ tag }}">
                         <span class="glyphicon glyphicon-star-empty"></span> {{tag}}
                     </button>
                 {% endfor %}
             </div>
-            <input id="tags" type="text" name="tags" style="display:none">
+            <input id="tags" type="text" name="tags" style="display:none" value="{{ edit_tags }}">
         </div>
         <button type="submit" class="btn btn-primary">提交</button>
     </form>
