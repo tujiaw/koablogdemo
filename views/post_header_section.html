@@ -8,8 +8,10 @@
         <span class="glyphicon glyphicon-calendar"></span><span class="post-date">&nbsp;{{ post.created_at }}</span>&nbsp;&nbsp;
         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;阅读({{ post.pv }})
         {% if user && post.author._id && user._id.toString() === post.author._id.toString() %}
-            &nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span>&nbsp;<a href="/edit/{{ post._id.toString() }}">编辑</a>
-            &nbsp;&nbsp;<span class="glyphicon glyphicon glyphicon-remove"></span>&nbsp;<a href="/remove/{{ post._id.toString() }}">删除</a>
+            &nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span>&nbsp;
+            <a href="/edit/{{ post._id.toString() }}">编辑</a>
+            &nbsp;&nbsp;<span class="glyphicon glyphicon glyphicon-remove"></span>&nbsp;
+            <a href="/remove/{{ post._id.toString() }}" onclick="return confirm('确认要删除这篇文章吗？');">删除</a>
         {% endif %}
     </div>
 </header>
