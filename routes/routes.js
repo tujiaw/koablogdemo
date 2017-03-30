@@ -2,6 +2,7 @@
 
 const Posts = require('../controller/posts')
 const User = require('../controller/user')
+const Qiniu = require('../controller/qiniu')
 
 module.exports = function(app, route) {
     app.use(route.get('/', Posts.list))
@@ -18,4 +19,6 @@ module.exports = function(app, route) {
     app.use(route.get('/user/signin', User.signin))
     app.use(route.get('/user/signout', User.signout))
     app.use(route.post('/user/signin', User.reqSignin))
+
+    app.use(route.get('/uptoken', Qiniu.uptoken))
 }
