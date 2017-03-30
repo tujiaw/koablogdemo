@@ -160,5 +160,25 @@ module.exports.edit = async function(ctx, id) {
 }
 
 module.exports.reqEdit = async function(ctx) {
-    ctx.redirect('/')
+    const user = ctx.session.user
+    let post = ctx.request.body
+
+    const title = post.title
+    const content = post.content
+    const tags = post.tags.split(';')
+    if (!post.title || !post.content) {
+        ctx.body = await ctx.render('title or content is empty')
+        return
+    }
+
+    try {
+        await PostsModel.updatePostById(post._id, user._id, {
+            title: title,
+            content: content,
+            tags: tags
+        })
+        ctx.redirect('/')
+    } catch (err) {
+        ctx.throw(err)
+    }
 }
