@@ -5,8 +5,8 @@ var MongoHelp = require('../models/mongo').mongoHelp;
 var config = require('config-lite');
 var PAGE_COUNT = config.pageCount;
 
-module.exports.index = async function(ctx, next) {
-    ctx.body = await ctx.render('index', 'hello')
+module.exports.test = async function(ctx, next) {
+    ctx.body = await ctx.render('test', 'hello')
 }
 
 module.exports.list = async function(ctx) {

@@ -6,6 +6,7 @@ const Qiniu = require('../controller/qiniu')
 
 module.exports = function(app, route) {
     app.use(route.get('/', Posts.list))
+    app.use(route.get('/test', Posts.test))
     
     app.use(route.get('/list', Posts.list))
     app.use(route.get('/write', Posts.write))
